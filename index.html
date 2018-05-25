@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<!-- 手机屏幕适配 -->
+		<!--<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=yes">-->
+		<title>先领后购更优惠</title>
+		<link rel="icon" href="./img/icon.jpg" />
+		<style>
+			/*div{
+				border:1px solid #c0c0c0;
+			}*/
+			.pop-nav{
+				width:60%;
+				margin: 0 auto;
+			}
+			.pop-footer{
+				width:center;
+				width:60%;
+				margin: 0 auto;
+				text-align: center;
+				margin-top:2em;
+				
+			}
+			/* 变大事件 */
+			#author-qrcode,#pop-qrcode{
+				width:150px;
+				transition: width 0.4s ease-in;
+				-webkit-transition: width 0.4s ease-in;
+				-moz-transition: width 0.4s ease-in;
+			}
+			#author-qrcode:hover,#pop-qrcode:hover{
+				width:200px;
+			}
+			.pop-items{
+				width:80%;
+				margin:6px auto;
+				display: flex;
+				display: -webkit-flex;
+				border-radius: 0.5em;
+				border:1px solid #c0c0c0;
+				box-shadow: 0 0 5px 1px #c0c0c0;
+			}
+			.pop-items div{
+				flex-flow: row nowrap;
+				-webkit-flex-flow: row nowrap;
+				flex-basis: auto;
+				-webkit-flex-basis: auto;
+			}
+			
+			/*推广图片的样式*/
+			.pop-img{
+				width:20em;
+				border-radius: 2em;
+				margin:0.5em 0.3em;
+				box-shadow: 0 0 5px 1px #c0c0c0;
+			}
+			.pop-num{
+				width:4em;
+				text-align: center;
+				
+			}
+			
+			.pop-qrcode{
+				position:fixed;
+				margin-left:85%;
+				margin-top: 1%;
+				border-radius: 0.8em;
+				box-shadow: 0 0 5px 1px #c0c0c0;
+				overflow: hidden;
+				cursor: pointer;
+			}
+			
+			.pop-introduce{
+				flex-grow: 1;
+				flex-shrink: 1;
+				color:rgba(67,205,127,0.8);
+				text-shadow: 0 0 1px rgba(67,205,127,0.5);
+				margin-top:1em;
+				margin-bottom: 1em;
+			}
+			.note-head{
+				font-size: 22px;
+				font-weight: bold;
+				color:rgba(255,48,48,0.8);
+				text-shadow: 0 0 1px rgba(255,48,48,0.5);
+				margin-bottom: 0.4em;
+			}
+			.note-words{
+				color:rgba(255,127,0,0.8);
+				text-shadow: 0 0 1px rgba(255,127,0,0.5);
+			}
+			.num-style{
+				margin-top: 1em;
+				font-size: 22px;
+				font-weight: bolder;
+				color:rgba(0,0,0,0.6);
+				text-shadow: 0 0 2px rgba(0,0,0,0.2);
+			}
+			.pop-author{
+				/*color:rgba(0,255,255,0.8);
+				text-shadow: 0 0 1px rgba(0,255,255,0.5);*/
+				font-weight: bold;
+			}
+			.pop-author:hover{
+				cursor: pointer;
+			}
+			.pop-divide{
+				border-bottom: 1px solid #c0c0c0;
+				width:60%;
+				margin:1em auto;
+				box-shadow: 0 2px 5px 1px #c0c0c0;
+			}
+			.info{
+				border: 1px solid #c0c0c0;
+				position: fixed;
+				position:-ms-device-fixed;
+				text-align: center;
+				width:200px;
+				overflow-wrap: break-word;
+				word-wrap: break-word;
+				margin-left:2%;
+				margin-top:1%;
+				border-radius: 1em;
+			}
+			.info-head{
+				margin:0.5em 0;
+				font-size: 18px;
+				font-weight: bold;
+				color:rgba(238,0,0,0.8);
+			}
+			.info-content{
+				color:rgba(255,99,71,0.9);
+				margin-bottom: 0.6em;
+			}
+			/*最后显示微信二维码的*/
+			.author-qrcode{
+				position: fixed;
+				bottom: 5em;
+				margin-left:85%;
+				border:1px solid #c0c0c0;
+				box-shadow: 0 0 5px 1px #c0c0c0;
+				border-radius: 0.6em;
+				overflow: hidden;
+			}
+			img{
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 style="text-align: center;letter-spacing: 1em;color:rgba(0,238,238,0.9);text-shadow: 0 0 5px #7FFF00;">联盟教程</h1>
+		<div class="pop-divide"></div>
+		<div class="info">
+			<div class="info-head">省钱方式</div>
+			<hr width="90%" color="#c0c0c0"/>
+			<div class="info-content">
+				1.领取优惠卷抵扣，价更低<br/>
+				2.每单返现可提现到支付宝<br/>
+				3.邀请身边朋友加入获收益
+			</div>
+		</div>
+		<div class="pop-qrcode">
+			<img id="pop-qrcode" src="./img/qrcode/qrcode.jpg" title="扫我下载"/>
+		</div>
+		<div class="pop-nav">
+			<!-- 步骤项 -->
+			<div class="pop-items">
+				<div class="pop-num">
+					<div class="num-style">1</div>
+				</div>
+				<div class="pop-item">
+					<img src="./img/popularize/popularize1.jpg" class="pop-img"/>
+				</div>
+				<div class="pop-introduce">
+					<span class="introduce-words">
+						保存图片后扫描或直接扫描图中二维码<br/>
+						下载APP<br/>
+						使用微信登录<br/>
+						注：右边的码也可以用哦！
+					</span>
+				</div>
+			</div>
+			
+			<div class="pop-items">
+				<div class="pop-num">
+					<div class="num-style">2</div>
+				</div>
+				<div class="pop-item">
+					<img src="./img/example1/less1.jpg" class="pop-img"/>
+				</div>
+				<div class="pop-introduce">
+					<span class="introduce-words">
+						进入淘宝，选择自己喜欢的商品
+					</span>
+				</div>
+			</div>
+			<div class="pop-items">
+				<div class="pop-num">
+					<div class="num-style">3</div>
+				</div>
+				<div class="pop-item">
+					<img src="./img/example1/less5.jpg" class="pop-img"/>
+				</div>
+				<div class="pop-introduce">
+					<span class="introduce-words">
+						这个页面是没用领卷前的支付页面<br/>
+						价格：78元
+					</span>
+				</div>
+			</div>
+			<div class="pop-items">
+				<div class="pop-num">
+					<div class="num-style">4</div>
+				</div>
+				<div class="pop-item">
+					<img src="./img/example1/less2.jpg" class="pop-img"/>
+				</div>
+				<div class="pop-introduce">
+					<span class="introduce-words">
+						长按标题那里，会弹出途中的小黑框<br/>
+						选择复制宝贝标题
+					</span>
+				</div>
+			</div>
+			<div class="pop-items">
+				<div class="pop-num">
+					<div class="num-style">5</div>
+				</div>
+				<div class="pop-item">
+					<img src="./img/example1/less3.jpg" class="pop-img"/>
+				</div>
+				<div class="pop-introduce">
+					<span class="introduce-words">
+						打开赚钱联盟<br/>
+						会自动弹出图中的小白框<br/>
+						<span>如果没用弹出</span><br/>
+						点击APP上边的搜索框即可
+					</span>
+				</div>
+			</div>
+			<div class="pop-items">
+				<div class="pop-num">
+					<div class="num-style">6</div>
+				</div>
+				<div class="pop-item">
+					<img src="./img/example1/less4.jpg" class="pop-img"/>
+				</div>
+				<div class="pop-introduce">
+					<span class="introduce-words">
+						显示搜索到的内容，与淘宝端对比<br/>
+						找到一样的产品<br/>
+						<span>看店铺名，评论即可</span>确认是否同家店<br/>
+						可以看到可以领卷减20<br/>
+						而且购买后确认收货还能返现6.38元
+					</span>
+				</div>
+			</div>
+			
+			<div class="pop-items">
+				<div class="pop-num">
+					<div class="num-style">7</div>
+				</div>
+				<div class="pop-item">
+					<img src="./img/example1/less6.jpg" class="pop-img"/>
+				</div>
+				<div class="pop-introduce">
+					<span class="introduce-words">
+						点击领卷购买<br/>
+						自动跳转到淘宝APP的领卷页面<br/>
+						点击立即领卷<br/>
+						自动跳转到商品页面<br/>
+						如果不放心，你可以重启手机<br/>
+						使用淘宝搜索到你要购买的商品<br/>
+						点击购买
+					</span>
+				</div>
+			</div>
+			<div class="pop-items">
+				<div class="pop-num">
+					<div class="num-style">8</div>
+				</div>
+				<div class="pop-item">
+					<img src="./img/example1/less7.jpg" class="pop-img"/>
+				</div>
+				<div class="pop-introduce">
+					<span class="introduce-words">
+						这是领卷后的订单页面<br/>
+						可以看到店铺优惠处显示<br/>
+						<span>省20元:内部优惠卷</span><br/>
+						相应的订单也变成了58<br/>
+						确认收货后还能在<br/>
+						<span>赚钱联盟</span>上领取6.38元的返现！！！
+					</span>
+				</div>
+			</div>
+			
+			<div class="pop-items">
+				<div class="pop-num">
+					<div class="num-style">9</div>
+				</div>
+				<div class="pop-introduce">
+					<div class="note-head">
+						<span>注意，搜索可能出现以下几种情况，请择优选择</span>
+					</div>
+					<div class="note-words">
+						1.价格更便宜（有优惠卷，有返现），当然用它了<br/>
+						2.价格相同（有返现），也要用，有返现<br/>
+						3.价格更高（有返现），比较价格，择低选择<br/>
+						4.搜索不到商品，GG的
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="author-qrcode">
+			<img id="author-qrcode" src="./img/qrcode/wechat.png" title="扫码加微信"/>
+		</div>
+		<div class="pop-footer">
+			POP by <span class="pop-author">AaronJiang</span> 
+			<div>
+				个人提供，与平台无关
+			</div>
+		</div>
+		
+	</body>
+	<!--<script>
+		function showBig(event){
+			var targetImg = event.target;
+			targetImg.style.cssText="width:250px";
+		}
+		
+		function showNormal(event){
+			var targetImg = event.target;
+			targetImg.style.cssText="width:150px";
+		}
+		
+		var popQrcode = document.querySelector("#pop-qrcode");
+		
+		var wechatQrcode = document.querySelector("#author-qrcode");
+		
+		console.log(popQrcode);
+		console.log(wechatQrcode);
+		
+		popQrcode.addEventListener("mouseenter",showBig,false);
+		wechatQrcode.addEventListener("mouseenter",showBig,false);
+		
+		popQrcode.addEventListener("mouseleave",showNormal,false);
+		wechatQrcode.addEventListener("mouseleave",showNormal,false);
+	</script>-->
+</html>
